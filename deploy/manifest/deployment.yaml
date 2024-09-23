@@ -25,7 +25,7 @@ spec:
         fsGroup: 65534
       containers:
         - name: hello-world
-          image: khs920210/hello-world:3
+          image: khs920210/hello-world:4
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
