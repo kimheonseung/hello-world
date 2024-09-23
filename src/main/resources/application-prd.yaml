@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    kubernetes:
+      discovery:
+        all-namespaces: true
+      config:
+        sources:
+        - name: hello-world-config

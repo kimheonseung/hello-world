@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: hello-world-role
+  namespace: raskub-app
+subjects:
+  - kind: ServiceAccount
+    name: hello-world-sa
+    apiGroup: ""
+roleRef:
+  kind: Role
+  name: hello-world-reader
+  apiGroup: rbac.authorization.k8s.io
