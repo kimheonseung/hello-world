@@ -27,6 +27,12 @@ spec:
         - name: hello-world
           image: khs920210/hello-world:4
           imagePullPolicy: IfNotPresent
+          env:
+          - name: SECURITY_MESSAGE
+            valueFrom:
+              secretKeyRef:
+                name: hello-world-secret
+                key: sec_message
           ports:
             - name: http
               protocol: TCP
@@ -49,3 +55,10 @@ spec:
               port: 8080
             initialDelaySeconds: 120
             periodSeconds: 10
+          volumeMounts:
+          - name: config-volume
+            mountPath: /opt/hello-world/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: hello-world-config
