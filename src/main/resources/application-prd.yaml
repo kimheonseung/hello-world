@@ -4,5 +4,12 @@ spring:
       discovery:
         all-namespaces: true
       config:
+        enabled: true
         sources:
-        - name: hello-world-config
+          - name: hello-world-config
+            namespace: raskub-app
+      secrets:
+        enable-api: true
+        sources:
+          - name: hello-world-secret
+            namespace: raskub-app
