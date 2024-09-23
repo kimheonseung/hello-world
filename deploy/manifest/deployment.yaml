@@ -4,6 +4,7 @@ metadata:
   labels:
     app: hello-world
   name: hello-world
+  namespace: raskub-app
 spec:
   revisionHistoryLimit: 5
   strategy:
@@ -19,6 +20,7 @@ spec:
       labels:
         app: hello-world
     spec:
+      serviceAccount: hello-world-sa
       securityContext:
         fsGroup: 65534
       containers:
@@ -26,10 +28,24 @@ spec:
           image: khs920210/hello-world:0
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - name: http
+              protocol: TCP
+              containerPort: 8080
           resources:
             limits:
-              memory: 1Gi
+              memory: 500Mi
             requests:
-              cpu: 2
-              memory: 1Gi
+              cpu: 300m
+              memory: 500Mi
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10

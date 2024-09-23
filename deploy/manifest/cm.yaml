@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-config
+  namespace: raskub-app
+data:
+  application.yaml: |-
+    cm:
+      custom:
+        message: hello world from cm config
