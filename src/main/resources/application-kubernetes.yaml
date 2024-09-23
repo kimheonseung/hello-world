@@ -7,9 +7,9 @@ spring:
         enabled: true
         sources:
           - name: hello-world-config
-            namespace: raskub-app
+        namespace: raskub-app
       secrets:
         enable-api: true
         sources:
           - name: hello-world-secret
-            namespace: raskub-app
+        namespace: raskub-app
