@@ -1,0 +1,7 @@
+cm:
+  custom:
+    message: local custom message
+
+sec:
+  custom:
+    message: local custom sec message
